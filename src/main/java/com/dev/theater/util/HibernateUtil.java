@@ -1,8 +1,8 @@
 package com.dev.theater.util;
 
+import com.dev.theater.exception.CrudException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
 
 public class HibernateUtil {
     private static final SessionFactory sessionFactory = initSessionFactory();
@@ -14,11 +14,11 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    private static SessionFactory initSessionFactory(){
+    private static SessionFactory initSessionFactory() {
         try {
             return new Configuration().configure().buildSessionFactory();
-        } catch (Exception e){
-            throw new RuntimeException("Error creating Session Factory", e);
+        } catch (Exception e) {
+            throw new CrudException("Error creating Session Factory", e);
         }
     }
 }

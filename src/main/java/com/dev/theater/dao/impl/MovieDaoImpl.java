@@ -1,17 +1,17 @@
 package com.dev.theater.dao.impl;
 
 import com.dev.theater.dao.MovieDao;
+import com.dev.theater.exception.CrudException;
 import com.dev.theater.library.Dao;
 import com.dev.theater.model.Movie;
 import com.dev.theater.util.HibernateUtil;
+import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import javax.persistence.criteria.CriteriaQuery;
-import java.util.List;
 
 @Dao
 public class MovieDaoImpl implements MovieDao {
-
     @Override
     public Movie add(Movie movie) {
         Transaction transaction = null;
@@ -27,9 +27,9 @@ public class MovieDaoImpl implements MovieDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert Movie entity", e);
+            throw new CrudException("Can't insert Movie entity", e);
         } finally {
-        session.close();
+            session.close();
         }
     }
 
@@ -40,8 +40,8 @@ public class MovieDaoImpl implements MovieDao {
                     .createQuery(Movie.class);
             criteriaQuery.from(Movie.class);
             return session.createQuery(criteriaQuery).getResultList();
-       } catch (Exception e){
-            throw new RuntimeException("Error getting all movies", e);
+        } catch (Exception e) {
+            throw new CrudException("Error getting all movies", e);
         }
     }
 }
