@@ -1,9 +1,8 @@
 package com.dev.theater.dao;
 
-import java.util.List;
-
 import com.dev.theater.library.Dao;
 import com.dev.theater.model.Movie;
+import java.util.List;
 
 @Dao
 public interface MovieDao {

@@ -1,7 +1,7 @@
 package com.dev.theater.service;
 
-import java.util.List;
 import com.dev.theater.model.Movie;
+import java.util.List;
 
 public interface MovieService {
     Movie add(Movie movie);

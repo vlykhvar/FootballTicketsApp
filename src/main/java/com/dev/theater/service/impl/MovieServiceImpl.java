@@ -5,13 +5,12 @@ import com.dev.theater.library.Inject;
 import com.dev.theater.library.Service;
 import com.dev.theater.model.Movie;
 import com.dev.theater.service.MovieService;
-
 import java.util.List;
 
 @Service
 public class MovieServiceImpl implements MovieService {
     @Inject
-    MovieDao movieDao;
+    private MovieDao movieDao;
 
     @Override
     public Movie add(Movie movie) {

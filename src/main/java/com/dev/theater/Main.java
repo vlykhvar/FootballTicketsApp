@@ -3,7 +3,6 @@ package com.dev.theater;
 import com.dev.theater.library.Injector;
 import com.dev.theater.model.Movie;
 import com.dev.theater.service.MovieService;
-import com.dev.theater.service.impl.MovieServiceImpl;
 
 public class Main {
     private static Injector injector = Injector.getInstance(Main.class.getPackageName());
