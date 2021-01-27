@@ -1,6 +1,5 @@
 package com.dev.theater.util;
 
-import com.dev.theater.exception.CrudException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -18,7 +17,7 @@ public class HibernateUtil {
         try {
             return new Configuration().configure().buildSessionFactory();
         } catch (Exception e) {
-            throw new CrudException("Error creating Session Factory", e);
+            throw new RuntimeException("Error creating Session Factory", e);
         }
     }
 }
