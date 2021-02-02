@@ -15,5 +15,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
         <mapping class ="com.dev.theater.model.Movie"/>
+        <mapping class ="com.dev.theater.model.CinemaHall"/>
+        <mapping class ="com.dev.theater.model.MovieSession"/>
     </session-factory>
 </hibernate-configuration>
