@@ -50,5 +50,6 @@ public class Main {
         System.out.println(userService.findByEmail("test@bigmir.net").toString());
         authenticationService.register("test2@bigmir.net", "12345");
         System.out.println(authenticationService.login("test2@bigmir.net", "12345").toString());
+        userService.getAll().stream().forEach(System.out::println);
     }
 }
