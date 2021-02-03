@@ -48,5 +48,7 @@ public class Main {
         User user = authenticationService.register("test@bigmir.net", "12345");
         System.out.println(user.toString());
         System.out.println(userService.findByEmail("test@bigmir.net").toString());
+        authenticationService.register("test2@bigmir.net", "12345");
+        System.out.println(authenticationService.login("test2@bigmir.net", "12345").toString());
     }
 }
