@@ -1,5 +1,6 @@
 package com.dev.theater;
 
+import com.dev.theater.exception.AuthenticationException;
 import com.dev.theater.library.Injector;
 import com.dev.theater.model.CinemaHall;
 import com.dev.theater.model.Movie;
@@ -10,9 +11,10 @@ import com.dev.theater.service.MovieService;
 import com.dev.theater.service.MovieSessionService;
 import com.dev.theater.service.UserService;
 import com.dev.theater.service.security.AuthenticationService;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import javax.security.sasl.AuthenticationException;
+
 
 public class Main {
     private static Injector injector

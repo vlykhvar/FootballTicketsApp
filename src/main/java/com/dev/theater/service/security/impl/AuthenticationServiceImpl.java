@@ -1,5 +1,6 @@
 package com.dev.theater.service.security.impl;
 
+import com.dev.theater.exception.AuthenticationException;
 import com.dev.theater.library.Service;
 import com.dev.theater.model.User;
 import com.dev.theater.service.UserService;
@@ -7,7 +8,6 @@ import com.dev.theater.service.impl.UserServiceImpl;
 import com.dev.theater.service.security.AuthenticationService;
 import com.dev.theater.util.HashUtil;
 import java.util.Optional;
-import javax.security.sasl.AuthenticationException;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
