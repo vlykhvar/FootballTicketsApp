@@ -4,7 +4,9 @@ import com.dev.theater.exception.AuthenticationException;
 import com.dev.theater.library.Inject;
 import com.dev.theater.library.Service;
 import com.dev.theater.model.User;
+import com.dev.theater.service.ShoppingCartService;
 import com.dev.theater.service.UserService;
+import com.dev.theater.service.impl.ShoppingCartServiceImpl;
 import com.dev.theater.service.security.AuthenticationService;
 import com.dev.theater.util.HashUtil;
 import java.util.Optional;
@@ -26,9 +28,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public User register(String email, String password) {
+        ShoppingCartService shoppingCartService = new ShoppingCartServiceImpl();
         User newUser = new User();
         newUser.setEmail(email);
         newUser.setPassword(password);
+        shoppingCartService.registerNewShoppingCart(newUser);
         return userService.add(newUser);
     }
 }
