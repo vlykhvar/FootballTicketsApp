@@ -43,7 +43,7 @@ public class UserDaoImpl implements UserDao {
             criteriaQuery.from(User.class);
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
-            throw new CrudException("Error getting all hall", e);
+            throw new CrudException("Error getting all users", e);
         }
     }
 
