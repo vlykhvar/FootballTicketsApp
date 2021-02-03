@@ -45,5 +45,4 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
             throw new CrudException("Error getting all hall", e);
         }
     }
-
 }
