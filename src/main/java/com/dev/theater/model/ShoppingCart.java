@@ -1,5 +1,6 @@
 package com.dev.theater.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,13 +16,15 @@ public class ShoppingCart {
     @Id
     private Long id;
     @OneToMany
-    @MapsId
-    @JoinColumn (name = "id")
     private List<Ticket> ticketList;
     @OneToOne
     @MapsId
     @JoinColumn (name = "id")
     private User user;
+
+    public ShoppingCart() {
+        ticketList = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

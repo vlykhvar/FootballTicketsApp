@@ -55,7 +55,6 @@ public class Main {
         authenticationService.register("test2@bigmir.net", "12345");
         System.out.println(authenticationService.login("test2@bigmir.net", "12345").toString());
         userService.getAll().forEach(System.out::println);
-        shoppingCartService.registerNewShoppingCart(user);
         ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
         shoppingCartService.addSession(movieSession, user);
         System.out.println(shoppingCart);
