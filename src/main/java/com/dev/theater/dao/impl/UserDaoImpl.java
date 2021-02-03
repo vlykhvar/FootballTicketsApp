@@ -7,10 +7,8 @@ import com.dev.theater.model.User;
 import com.dev.theater.util.HibernateUtil;
 import java.util.List;
 import java.util.Optional;
-import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 @Dao
 public class UserDaoImpl implements UserDao {

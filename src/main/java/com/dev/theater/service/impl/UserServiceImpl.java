@@ -6,7 +6,6 @@ import com.dev.theater.library.Service;
 import com.dev.theater.model.User;
 import com.dev.theater.service.UserService;
 import com.dev.theater.util.HashUtil;
-
 import java.util.List;
 import java.util.Optional;
 

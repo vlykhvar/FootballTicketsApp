@@ -4,10 +4,8 @@ import com.dev.theater.dao.MovieDao;
 import com.dev.theater.exception.CrudException;
 import com.dev.theater.library.Dao;
 import com.dev.theater.model.Movie;
-import com.dev.theater.model.User;
 import com.dev.theater.util.HibernateUtil;
 import java.util.List;
-import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
