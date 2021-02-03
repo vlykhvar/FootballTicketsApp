@@ -1,8 +1,6 @@
 package com.dev.theater.exception;
 
-import javax.security.sasl.SaslException;
-
-public class AuthenticationException extends SaslException {
+public class AuthenticationException extends Exception {
     public AuthenticationException(String message, Throwable cause) {
         super(message, cause);
     }
