@@ -19,6 +19,6 @@
         <mapping class ="com.dev.theater.model.MovieSession"/>
         <mapping class ="com.dev.theater.model.User"/>
         <mapping class ="com.dev.theater.model.ShoppingCart"/>
-        <mapping class ="com.dev.theater.model.Ticket" />
+        <mapping class ="com.dev.theater.model.Ticket"/>
     </session-factory>
 </hibernate-configuration>
