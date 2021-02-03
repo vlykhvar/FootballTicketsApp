@@ -5,10 +5,12 @@ import com.dev.theater.library.Injector;
 import com.dev.theater.model.CinemaHall;
 import com.dev.theater.model.Movie;
 import com.dev.theater.model.MovieSession;
+import com.dev.theater.model.ShoppingCart;
 import com.dev.theater.model.User;
 import com.dev.theater.service.CinemaHallService;
 import com.dev.theater.service.MovieService;
 import com.dev.theater.service.MovieSessionService;
+import com.dev.theater.service.ShoppingCartService;
 import com.dev.theater.service.UserService;
 import com.dev.theater.service.security.AuthenticationService;
 import java.time.LocalDate;
@@ -27,6 +29,8 @@ public class Main {
             = (UserService) injector.getInstance(UserService.class);
     private static AuthenticationService authenticationService
             = (AuthenticationService) injector.getInstance(AuthenticationService.class);
+    private static ShoppingCartService shoppingCartService
+            = (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
 
     public static void main(String[] args) throws AuthenticationException {
         Movie movie = new Movie();
@@ -50,6 +54,13 @@ public class Main {
         System.out.println(userService.findByEmail("test@bigmir.net").toString());
         authenticationService.register("test2@bigmir.net", "12345");
         System.out.println(authenticationService.login("test2@bigmir.net", "12345").toString());
-        userService.getAll().stream().forEach(System.out::println);
+        userService.getAll().forEach(System.out::println);
+        shoppingCartService.registerNewShoppingCart(user);
+        ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
+        shoppingCartService.addSession(movieSession, user);
+        System.out.println(shoppingCart);
+        System.out.println(shoppingCartService.getByUser(user));
+        shoppingCartService.clear(shoppingCart);
+        System.out.println(shoppingCart);
     }
 }
