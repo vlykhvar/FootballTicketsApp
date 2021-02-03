@@ -17,7 +17,6 @@ public class ShoppingCartDaoImpl extends DaoImpl<ShoppingCart> implements Shoppi
             return session.createQuery("from ShoppingCart sc left join fetch sc.ticketList"
                 + " where sc.user = :user", ShoppingCart.class)
                 .setParameter("user", user).getSingleResult();
-
         } catch (Exception e) {
             throw new CrudException("Could not find user : " + user.getEmail(), e);
         }
