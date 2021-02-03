@@ -17,5 +17,6 @@
         <mapping class ="com.dev.theater.model.Movie"/>
         <mapping class ="com.dev.theater.model.CinemaHall"/>
         <mapping class ="com.dev.theater.model.MovieSession"/>
+        <mapping class ="com.dev.theater.model.User"/>
     </session-factory>
 </hibernate-configuration>

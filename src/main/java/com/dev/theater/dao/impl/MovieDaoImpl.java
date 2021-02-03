@@ -6,7 +6,6 @@ import com.dev.theater.library.Dao;
 import com.dev.theater.model.Movie;
 import com.dev.theater.util.HibernateUtil;
 import java.util.List;
-import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -37,10 +36,7 @@ public class MovieDaoImpl implements MovieDao {
     @Override
     public List<Movie> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            CriteriaQuery<Movie> criteriaQuery = session.getCriteriaBuilder()
-                    .createQuery(Movie.class);
-            criteriaQuery.from(Movie.class);
-            return session.createQuery(criteriaQuery).getResultList();
+            return session.createQuery("from Movie", Movie.class).getResultList();
         } catch (Exception e) {
             throw new CrudException("Error getting all movies", e);
         }
