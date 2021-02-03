@@ -11,10 +11,8 @@ import com.dev.theater.service.MovieService;
 import com.dev.theater.service.MovieSessionService;
 import com.dev.theater.service.UserService;
 import com.dev.theater.service.security.AuthenticationService;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 
 public class Main {
     private static Injector injector

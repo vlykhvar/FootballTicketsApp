@@ -1,17 +1,18 @@
 package com.dev.theater.service.security.impl;
 
 import com.dev.theater.exception.AuthenticationException;
+import com.dev.theater.library.Inject;
 import com.dev.theater.library.Service;
 import com.dev.theater.model.User;
 import com.dev.theater.service.UserService;
-import com.dev.theater.service.impl.UserServiceImpl;
 import com.dev.theater.service.security.AuthenticationService;
 import com.dev.theater.util.HashUtil;
 import java.util.Optional;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    private UserService userService = new UserServiceImpl();
+    @Inject
+    private UserService userService;
 
     @Override
     public User login(String email, String password) throws AuthenticationException {
