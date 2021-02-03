@@ -1,6 +1,11 @@
 package com.dev.theater.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ticket {
@@ -8,10 +13,8 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    @Column(nullable = false)
     private MovieSession movieSession;
-    @OneToOne
-    @Column(nullable = false)
+    @ManyToOne
     private User user;
 
     public Long getId() {
