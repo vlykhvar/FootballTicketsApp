@@ -7,4 +7,3 @@ import com.dev.theater.model.Ticket;
 @Dao
 public class TicketDaoImpl extends DaoImpl<Ticket> implements TicketDao {
 }
-
