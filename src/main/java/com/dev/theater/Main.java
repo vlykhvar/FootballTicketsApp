@@ -64,7 +64,7 @@ public class Main {
         ticket.setUser(user);
         ticket.setMovieSession(movieSession);
         ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
-        shoppingCart.getTicketList().add(ticket);
+        shoppingCartService.addSession(movieSession, user);
         System.out.println(shoppingCart);
         System.out.println(shoppingCart);
         orderService.completeOrder(shoppingCartService.getByUser(user));
