@@ -6,7 +6,6 @@ import com.dev.theater.model.CinemaHall;
 import com.dev.theater.model.Movie;
 import com.dev.theater.model.MovieSession;
 import com.dev.theater.model.ShoppingCart;
-import com.dev.theater.model.Ticket;
 import com.dev.theater.model.User;
 import com.dev.theater.service.CinemaHallService;
 import com.dev.theater.service.MovieService;
