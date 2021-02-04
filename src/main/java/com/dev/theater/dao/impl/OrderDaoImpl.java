@@ -14,7 +14,7 @@ public class OrderDaoImpl extends DaoImpl<Order> implements OrderDao {
     @Override
     public List<Order> getOrdersHistory(User user) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("from Order o inner join fetch o.tickets"
+            return session.createQuery("select distinct o from Order o inner join fetch o.tickets"
                     + " where o.user = :user", Order.class)
                     .setParameter("user", user)
                     .getResultList();
