@@ -9,10 +9,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 @Dao
-public class MovieSessionDaoImpl implements MovieSessionDao {
+public class MovieSessionDaoImpl extends DaoImpl<MovieSession> implements MovieSessionDao {
     @Override
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -24,28 +23,6 @@ public class MovieSessionDaoImpl implements MovieSessionDao {
                     .getResultList();
         } catch (Exception e) {
             throw new CrudException("Can't get session on id " + movieId + " in " + date);
-        }
-    }
-
-    @Override
-    public MovieSession add(MovieSession movieSession) {
-        Transaction transaction = null;
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
-            session.save(movieSession);
-            transaction.commit();
-            return movieSession;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            throw new CrudException("Can't insert movie session  " + movieSession, e);
-        } finally {
-            if (session != null) {
-                session.close();
-            }
         }
     }
 }
