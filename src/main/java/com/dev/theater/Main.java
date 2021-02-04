@@ -6,10 +6,12 @@ import com.dev.theater.model.CinemaHall;
 import com.dev.theater.model.Movie;
 import com.dev.theater.model.MovieSession;
 import com.dev.theater.model.ShoppingCart;
+import com.dev.theater.model.Ticket;
 import com.dev.theater.model.User;
 import com.dev.theater.service.CinemaHallService;
 import com.dev.theater.service.MovieService;
 import com.dev.theater.service.MovieSessionService;
+import com.dev.theater.service.OrderService;
 import com.dev.theater.service.ShoppingCartService;
 import com.dev.theater.service.UserService;
 import com.dev.theater.service.security.AuthenticationService;
@@ -31,6 +33,8 @@ public class Main {
             = (AuthenticationService) injector.getInstance(AuthenticationService.class);
     private static ShoppingCartService shoppingCartService
             = (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
+    private static OrderService orderService
+            = (OrderService) injector.getInstance(OrderService.class);
 
     public static void main(String[] args) throws AuthenticationException {
         Movie movie = new Movie();
@@ -55,11 +59,15 @@ public class Main {
         authenticationService.register("test2@bigmir.net", "12345");
         System.out.println(authenticationService.login("test2@bigmir.net", "12345").toString());
         userService.getAll().forEach(System.out::println);
-        ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
         shoppingCartService.addSession(movieSession, user);
+        Ticket ticket = new Ticket();
+        ticket.setUser(user);
+        ticket.setMovieSession(movieSession);
+        ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
+        shoppingCart.getTicketList().add(ticket);
         System.out.println(shoppingCart);
-        System.out.println(shoppingCartService.getByUser(user));
-        shoppingCartService.clear(shoppingCart);
         System.out.println(shoppingCart);
+        orderService.completeOrder(shoppingCartService.getByUser(user));
+        orderService.getOrdersHistory(user).forEach(System.out::println);
     }
 }
