@@ -47,7 +47,7 @@ public class Order {
         return orderTime;
     }
 
-    public void setOrdetTime(LocalDateTime orderTime) {
+    public void setOrderTime(LocalDateTime orderTime) {
         this.orderTime = orderTime;
     }
 
