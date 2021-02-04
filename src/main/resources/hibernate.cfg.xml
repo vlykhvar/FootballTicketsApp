@@ -20,5 +20,6 @@
         <mapping class ="com.dev.theater.model.User"/>
         <mapping class ="com.dev.theater.model.ShoppingCart"/>
         <mapping class ="com.dev.theater.model.Ticket"/>
+        <mapping class ="com.dev.theater.model.Order"/>
     </session-factory>
 </hibernate-configuration>
