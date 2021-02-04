@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class DaoImpl<T> implements GenericDao<T> {
-
     @Override
     public T add(T t) {
         Transaction transaction = null;
