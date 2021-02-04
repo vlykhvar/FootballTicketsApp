@@ -63,8 +63,8 @@ public class Order {
     public String toString() {
         return "Order{"
                 + "id=" + id
-                + ", ticets=" + tickets
-                + ", ordetTime=" + orderTime
+                + ", tickets=" + tickets
+                + ", orderTime=" + orderTime
                 + ", user=" + user
                 + '}';
     }
