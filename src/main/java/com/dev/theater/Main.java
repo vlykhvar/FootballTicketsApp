@@ -60,9 +60,6 @@ public class Main {
         System.out.println(authenticationService.login("test2@bigmir.net", "12345").toString());
         userService.getAll().forEach(System.out::println);
         shoppingCartService.addSession(movieSession, user);
-        Ticket ticket = new Ticket();
-        ticket.setUser(user);
-        ticket.setMovieSession(movieSession);
         ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
         shoppingCartService.addSession(movieSession, user);
         System.out.println(shoppingCart);
