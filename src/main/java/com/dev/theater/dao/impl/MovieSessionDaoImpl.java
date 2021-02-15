@@ -2,19 +2,25 @@ package com.dev.theater.dao.impl;
 
 import com.dev.theater.dao.MovieSessionDao;
 import com.dev.theater.exception.CrudException;
-import com.dev.theater.library.Dao;
 import com.dev.theater.model.MovieSession;
-import com.dev.theater.util.HibernateUtil;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-@Dao
+@Repository
 public class MovieSessionDaoImpl extends DaoImpl<MovieSession> implements MovieSessionDao {
+    @Autowired
+    public MovieSessionDaoImpl(SessionFactory sessionFactory) {
+        super(sessionFactory);
+    }
+
     @Override
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from MovieSession "
                     + "where id = :movieId and DATE_FORMAT(showTime,'%Y-%m-%d') "
                     + "= :date", MovieSession.class)

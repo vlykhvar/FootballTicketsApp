@@ -1,17 +1,22 @@
 package com.dev.theater.service.impl;
 
 import com.dev.theater.dao.MovieSessionDao;
-import com.dev.theater.library.Inject;
-import com.dev.theater.library.Service;
 import com.dev.theater.model.MovieSession;
 import com.dev.theater.service.MovieSessionService;
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class MovieSessionServiceImpl implements MovieSessionService {
-    @Inject
+
     private MovieSessionDao movieSessionDao;
+
+    @Autowired
+    MovieSessionServiceImpl(MovieSessionDao movieSessionDao) {
+        this.movieSessionDao = movieSessionDao;
+    }
 
     @Override
     public List<MovieSession> findAvailableSessions(Long movieId, LocalDate date) {

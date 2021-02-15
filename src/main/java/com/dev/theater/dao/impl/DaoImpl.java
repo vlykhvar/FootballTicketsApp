@@ -2,17 +2,27 @@ package com.dev.theater.dao.impl;
 
 import com.dev.theater.dao.GenericDao;
 import com.dev.theater.exception.CrudException;
-import com.dev.theater.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DaoImpl<T> implements GenericDao<T> {
+    protected final SessionFactory sessionFactory;
+
+    @Autowired
+    public DaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public T add(T t) {
         Transaction transaction = null;
         Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.save(t);
             transaction.commit();
