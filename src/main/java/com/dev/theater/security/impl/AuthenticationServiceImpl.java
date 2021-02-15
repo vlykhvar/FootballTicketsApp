@@ -1,21 +1,26 @@
-package com.dev.theater.service.security.impl;
+package com.dev.theater.security.impl;
 
 import com.dev.theater.exception.AuthenticationException;
-import com.dev.theater.library.Inject;
-import com.dev.theater.library.Service;
 import com.dev.theater.model.User;
+import com.dev.theater.security.AuthenticationService;
 import com.dev.theater.service.ShoppingCartService;
 import com.dev.theater.service.UserService;
-import com.dev.theater.service.security.AuthenticationService;
 import com.dev.theater.util.HashUtil;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    @Inject
-    private UserService userService;
-    @Inject
-    private ShoppingCartService shoppingCartService;
+    private final UserService userService;
+    private final ShoppingCartService shoppingCartService;
+
+    @Autowired
+    public AuthenticationServiceImpl(UserService userService,
+                                     ShoppingCartService shoppingCartService) {
+        this.userService = userService;
+        this.shoppingCartService = shoppingCartService;
+    }
 
     @Override
     public User login(String email, String password) throws AuthenticationException {

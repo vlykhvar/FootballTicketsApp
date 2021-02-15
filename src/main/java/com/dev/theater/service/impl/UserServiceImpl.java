@@ -1,18 +1,22 @@
 package com.dev.theater.service.impl;
 
 import com.dev.theater.dao.UserDao;
-import com.dev.theater.library.Inject;
-import com.dev.theater.library.Service;
 import com.dev.theater.model.User;
 import com.dev.theater.service.UserService;
 import com.dev.theater.util.HashUtil;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Inject
-    private UserDao userDao;
+    private final UserDao userDao;
+
+    @Autowired
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public User add(User user) {
