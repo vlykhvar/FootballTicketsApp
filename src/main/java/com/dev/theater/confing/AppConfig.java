@@ -18,11 +18,11 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
         "com.dev.theater.dao",
         "com.dev.theater.security"
 })
-public class AppConfing {
+public class AppConfig {
     private final Environment environment;
 
     @Autowired
-    public AppConfing(Environment environment) {
+    public AppConfig(Environment environment) {
         this.environment = environment;
     }
 
