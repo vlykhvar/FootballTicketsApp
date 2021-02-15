@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MovieServiceImpl implements MovieService {
-    private MovieDao movieDao;
+    private final MovieDao movieDao;
 
     @Autowired
-    MovieServiceImpl(MovieDao movieDao) {
+    public MovieServiceImpl(MovieDao movieDao) {
         this.movieDao = movieDao;
     }
 

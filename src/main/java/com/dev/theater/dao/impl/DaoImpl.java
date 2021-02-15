@@ -5,14 +5,12 @@ import com.dev.theater.exception.CrudException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class DaoImpl<T> implements GenericDao<T> {
     protected final SessionFactory sessionFactory;
 
-    @Autowired
     public DaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

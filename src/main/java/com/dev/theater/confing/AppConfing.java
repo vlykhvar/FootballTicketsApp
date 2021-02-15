@@ -19,7 +19,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
         "com.dev.theater.security"
 })
 public class AppConfing {
-    private Environment environment;
+    private final Environment environment;
 
     @Autowired
     public AppConfing(Environment environment) {
