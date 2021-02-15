@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DaoImpl<T> implements GenericDao<T> {
+public abstract class DaoImpl<T> implements GenericDao<T> {
     protected final SessionFactory sessionFactory;
 
     public DaoImpl(SessionFactory sessionFactory) {
