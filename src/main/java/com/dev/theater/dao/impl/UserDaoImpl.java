@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl extends DaoImpl<User> implements UserDao {
-
     @Autowired
     public UserDaoImpl(SessionFactory sessionFactory) {
         super(sessionFactory);
