@@ -15,7 +15,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:db.properties")
 @ComponentScan(basePackages = {
         "com.dev.theater.service",
-        "com.dev.theater.dao"
+        "com.dev.theater.dao",
+        "com.dev.theater.security"
 })
 public class AppConfing {
     private Environment environment;

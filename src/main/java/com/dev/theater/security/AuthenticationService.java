@@ -1,4 +1,4 @@
-package com.dev.theater.service.security;
+package com.dev.theater.security;
 
 import com.dev.theater.exception.AuthenticationException;
 import com.dev.theater.model.User;

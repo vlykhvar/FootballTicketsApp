@@ -1,10 +1,10 @@
-package com.dev.theater.service.security.impl;
+package com.dev.theater.security.impl;
 
 import com.dev.theater.exception.AuthenticationException;
 import com.dev.theater.model.User;
 import com.dev.theater.service.ShoppingCartService;
 import com.dev.theater.service.UserService;
-import com.dev.theater.service.security.AuthenticationService;
+import com.dev.theater.security.AuthenticationService;
 import com.dev.theater.util.HashUtil;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

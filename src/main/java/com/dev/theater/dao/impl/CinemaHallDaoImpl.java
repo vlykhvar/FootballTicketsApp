@@ -6,11 +6,12 @@ import com.dev.theater.model.CinemaHall;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class CinemaHallDaoImpl extends DaoImpl<CinemaHall> implements CinemaHallDao {
-
+    @Autowired
     public CinemaHallDaoImpl(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
