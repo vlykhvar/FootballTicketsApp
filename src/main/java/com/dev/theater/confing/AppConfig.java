@@ -16,7 +16,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @ComponentScan(basePackages = {
         "com.dev.theater.service",
         "com.dev.theater.dao",
-        "com.dev.theater.security"
+        "com.dev.theater.security",
+        "com.dev.theater.mapper"
 })
 public class AppConfig {
     private final Environment environment;
@@ -46,7 +47,7 @@ public class AppConfig {
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
 
         localSessionFactoryBean.setHibernateProperties(properties);
-        localSessionFactoryBean.setPackagesToScan("com.hibernate.model");
+        localSessionFactoryBean.setPackagesToScan("com.dev.theater.model");
         return localSessionFactoryBean;
     }
 }
