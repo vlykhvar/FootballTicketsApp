@@ -24,4 +24,16 @@ public class CinemaHallDaoImpl extends DaoImpl<CinemaHall> implements CinemaHall
             throw new CrudException("Error getting all hall", e);
         }
     }
+
+    @Override
+    public CinemaHall findById(Long cinemaHallId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from CinemaHall "
+                    + "where id = :cinemaHallId", CinemaHall.class)
+                    .setParameter("cinemaHallId", cinemaHallId)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new CrudException("Can't get cinema hall on id " + cinemaHallId);
+        }
+    }
 }

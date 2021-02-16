@@ -1,18 +1,9 @@
 package com.dev.theater.model.dto;
 
 public class MovieSessionRequestDto {
-    private String movieTitle;
+    private Long movieId;
     private String showTime;
     private Long cinemaHallId;
-    private String cinemaHallDescription;
-
-    public String getCinemaHallDescription() {
-        return cinemaHallDescription;
-    }
-
-    public void setCinemaHallDescription(String cinemaHallDescription) {
-        this.cinemaHallDescription = cinemaHallDescription;
-    }
 
     public String getShowTime() {
         return showTime;
@@ -22,12 +13,12 @@ public class MovieSessionRequestDto {
         this.showTime = showTime;
     }
 
-    public String getMovieTitle() {
-        return movieTitle;
+    public Long getMovieId() {
+        return movieId;
     }
 
-    public void setMovieTitle(String movieTitle) {
-        this.movieTitle = movieTitle;
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
     }
 
     public Long getCinemaHallId() {

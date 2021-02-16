@@ -2,6 +2,7 @@ package com.dev.theater.controller;
 
 import com.dev.theater.mapper.CinemaHallMapper;
 import com.dev.theater.model.CinemaHall;
+import com.dev.theater.model.dto.CinemaHallRequestDto;
 import com.dev.theater.model.dto.CinemaHallResponseDto;
 import com.dev.theater.service.CinemaHallService;
 import java.util.List;
@@ -33,8 +34,8 @@ public class CinemaHallController {
     }
 
     @PostMapping
-    public void addCinemaHall(CinemaHallResponseDto cinemaHallDto) {
-        CinemaHall cinemaHall = cinemaHallMapper.dtoToCinemaHall(cinemaHallDto);
+    public void addCinemaHall(CinemaHallRequestDto cinemaHallRequestDto) {
+        CinemaHall cinemaHall = cinemaHallMapper.dtoToCinemaHall(cinemaHallRequestDto);
         cinemaHallService.add(cinemaHall);
     }
 }
