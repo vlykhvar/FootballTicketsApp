@@ -6,6 +6,7 @@ import com.dev.theater.model.MovieSession;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -76,6 +77,18 @@ public class MovieSessionDaoImpl extends DaoImpl<MovieSession> implements MovieS
             if (session != null) {
                 session.close();
             }
+        }
+    }
+
+    @Override
+    public Optional<MovieSession> getById(Long movieSessionId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from MovieSession"
+                    + "where id = :movieSessionId", MovieSession.class)
+                    .setParameter("movieSessionId", movieSessionId)
+                    .uniqueResultOptional();
+        } catch (Exception e) {
+            throw new CrudException("Can't get movie session on id " + movieSessionId);
         }
     }
 }

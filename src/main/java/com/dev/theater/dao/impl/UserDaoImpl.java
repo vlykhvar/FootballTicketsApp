@@ -36,4 +36,16 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
             throw new CrudException("Could not find user with email: " + email, e);
         }
     }
+
+    @Override
+    public Optional<User> findById(Long userId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from User "
+                    + "where id = :userId", User.class)
+                    .setParameter("userId", userId)
+                    .uniqueResultOptional();
+        } catch (Exception e) {
+            throw new CrudException("Can't get user on id " + userId);
+        }
+    }
 }
