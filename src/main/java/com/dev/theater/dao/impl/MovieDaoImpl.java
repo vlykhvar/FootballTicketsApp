@@ -24,4 +24,16 @@ public class MovieDaoImpl extends DaoImpl<Movie> implements MovieDao {
             throw new CrudException("Error getting all movies", e);
         }
     }
+
+    @Override
+    public Movie findById(Long movieId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from Movie "
+                    + "where id = :movieId", Movie.class)
+                    .setParameter("movieId", movieId)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new CrudException("Can't get movie on id " + movieId);
+        }
+    }
 }

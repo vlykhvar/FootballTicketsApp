@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +30,52 @@ public class MovieSessionDaoImpl extends DaoImpl<MovieSession> implements MovieS
                     .getResultList();
         } catch (Exception e) {
             throw new CrudException("Can't get session on id " + movieId + " in " + date);
+        }
+    }
+
+    public MovieSession update(MovieSession movieSession) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.update(movieSession);
+            transaction.commit();
+            return movieSession;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw new CrudException("Can't update moviesession: "
+                    + movieSession, e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        Transaction transaction = null;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            MovieSession movieSession = session.load(MovieSession.class, id);
+            session.remove(movieSession);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw new CrudException("Can't delete moviesession by id: "
+                    + id, e);
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 }
