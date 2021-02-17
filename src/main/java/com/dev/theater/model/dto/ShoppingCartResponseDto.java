@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ShoppingCartResponseDto {
     private Long id;
-    private List<Ticket> tickets;
+    private List<Ticket> ticketIds;
     private String userEmail;
 
     public Long getId() {
@@ -16,12 +16,12 @@ public class ShoppingCartResponseDto {
         this.id = id;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<Ticket> getTicketIds() {
+        return ticketIds;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTicketIds(List<Ticket> ticketIds) {
+        this.ticketIds = ticketIds;
     }
 
     public String getUserEmail() {

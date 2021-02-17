@@ -20,7 +20,7 @@ public class OrderMapper {
             response.setId(ticket.getId());
             responseList.add(response);
         }
-        orderResponseDto.setTickets(responseList);
+        orderResponseDto.setTicketIds(responseList);
         orderResponseDto.setUserEmail(order.getUser().getEmail());
         return orderResponseDto;
     }

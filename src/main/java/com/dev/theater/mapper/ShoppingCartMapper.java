@@ -20,7 +20,7 @@ public class ShoppingCartMapper {
             response.setId(ticket.getId());
             responseList.add(response);
         }
-        shoppingCartResponseDto.setTickets(responseList);
+        shoppingCartResponseDto.setTicketIds(responseList);
         return shoppingCartResponseDto;
     }
 }
