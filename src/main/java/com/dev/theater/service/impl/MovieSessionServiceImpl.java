@@ -5,6 +5,7 @@ import com.dev.theater.model.MovieSession;
 import com.dev.theater.service.MovieSessionService;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,10 @@ public class MovieSessionServiceImpl implements MovieSessionService {
     @Override
     public boolean delete(Long id) {
         return movieSessionDao.delete(id);
+    }
+
+    @Override
+    public Optional<MovieSession> getById(Long id) {
+        return movieSessionDao.getById(id);
     }
 }
