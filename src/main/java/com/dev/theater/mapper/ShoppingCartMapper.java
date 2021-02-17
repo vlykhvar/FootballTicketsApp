@@ -14,11 +14,9 @@ public class ShoppingCartMapper {
         shoppingCartResponseDto.setId(shoppingCart.getId());
         shoppingCartResponseDto.setUserEmail(shoppingCart.getUser().getEmail());
         List<Ticket> listOld = shoppingCart.getTicketList();
-        List<Ticket> responseList = new ArrayList<>();
+        List<Long> responseList = new ArrayList<>();
         for (Ticket ticket : listOld) {
-            Ticket response = new Ticket();
-            response.setId(ticket.getId());
-            responseList.add(response);
+            responseList.add(ticket.getId());
         }
         shoppingCartResponseDto.setTicketIds(responseList);
         return shoppingCartResponseDto;

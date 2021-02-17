@@ -14,11 +14,9 @@ public class OrderMapper {
         orderResponseDto.setId(order.getId());
         orderResponseDto.setOrderTime(order.getOrderTime().toString());
         List<Ticket> listOld = order.getTickets();
-        List<Ticket> responseList = new ArrayList<>();
+        List<Long> responseList = new ArrayList<>();
         for (Ticket ticket : listOld) {
-            Ticket response = new Ticket();
-            response.setId(ticket.getId());
-            responseList.add(response);
+            responseList.add(ticket.getId());
         }
         orderResponseDto.setTicketIds(responseList);
         orderResponseDto.setUserEmail(order.getUser().getEmail());
