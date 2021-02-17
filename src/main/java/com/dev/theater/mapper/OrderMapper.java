@@ -3,10 +3,8 @@ package com.dev.theater.mapper;
 import com.dev.theater.model.Order;
 import com.dev.theater.model.Ticket;
 import com.dev.theater.model.dto.OrderResponseDto;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Component;
 
 @Component
