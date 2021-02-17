@@ -1,6 +1,5 @@
 package com.dev.theater.model.dto;
 
-import com.dev.theater.model.Ticket;
 import java.util.List;
 
 public class OrderResponseDto {
