@@ -5,6 +5,8 @@ import com.dev.theater.model.Ticket;
 import com.dev.theater.model.dto.OrderResponseDto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,11 +15,8 @@ public class OrderMapper {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
         orderResponseDto.setId(order.getId());
         orderResponseDto.setOrderTime(order.getOrderTime().toString());
-        List<Ticket> listOld = order.getTickets();
-        List<Long> responseList = new ArrayList<>();
-        for (Ticket ticket : listOld) {
-            responseList.add(ticket.getId());
-        }
+        List<Long> responseList = order.getTickets()
+                .stream().map(Ticket::getId).collect(Collectors.toList());
         orderResponseDto.setTicketIds(responseList);
         orderResponseDto.setUserEmail(order.getUser().getEmail());
         return orderResponseDto;

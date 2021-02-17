@@ -5,6 +5,8 @@ import com.dev.theater.model.Ticket;
 import com.dev.theater.model.dto.ShoppingCartResponseDto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,11 +15,8 @@ public class ShoppingCartMapper {
         ShoppingCartResponseDto shoppingCartResponseDto = new ShoppingCartResponseDto();
         shoppingCartResponseDto.setId(shoppingCart.getId());
         shoppingCartResponseDto.setUserEmail(shoppingCart.getUser().getEmail());
-        List<Ticket> listOld = shoppingCart.getTicketList();
-        List<Long> responseList = new ArrayList<>();
-        for (Ticket ticket : listOld) {
-            responseList.add(ticket.getId());
-        }
+        List<Long> responseList = shoppingCart.getTicketList()
+                .stream().map(Ticket::getId).collect(Collectors.toList());
         shoppingCartResponseDto.setTicketIds(responseList);
         return shoppingCartResponseDto;
     }
