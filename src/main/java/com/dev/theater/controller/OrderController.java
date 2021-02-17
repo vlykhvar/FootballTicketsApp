@@ -34,7 +34,7 @@ public class OrderController {
         this.shoppingCartService = shoppingCartService;
     }
 
-    @GetMapping("/orders")
+    @GetMapping
     public List<OrderResponseDto> getAllOrderByUserId(@RequestParam Long userId) {
         User user = userService.findById(userId).orElseThrow();
         return orderService.getOrdersHistory(user)
