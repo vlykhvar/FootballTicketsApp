@@ -5,6 +5,7 @@ import com.dev.theater.model.MovieSession;
 import com.dev.theater.model.dto.MovieSessionRequestDto;
 import com.dev.theater.model.dto.MovieSessionResponseDto;
 import com.dev.theater.service.MovieSessionService;
+import jakarta.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,14 +35,14 @@ public class MovieSessionController {
     }
 
     @PostMapping
-    public void addMovieSession(@RequestBody MovieSessionRequestDto movieSessionRequestDto) {
+    public void addMovieSession(@RequestBody @Valid MovieSessionRequestDto movieSessionRequestDto) {
         MovieSession movieSession = movieSessionMapper.dtoToMovieSession(movieSessionRequestDto);
         movieSessionService.add(movieSession);
     }
 
     @PutMapping("/{id}")
     public void update(@PathVariable Long id,
-                       @RequestBody MovieSessionRequestDto movieSessionRequestDto) {
+                       @RequestBody @Valid MovieSessionRequestDto movieSessionRequestDto) {
         MovieSession movieSession = movieSessionMapper.dtoToMovieSession(movieSessionRequestDto);
         movieSession.setId(id);
         movieSessionService.update(movieSession);
