@@ -1,9 +1,10 @@
 package com.dev.theater.model.dto;
 
+import com.dev.theater.security.validators.ValidateEmail;
 import com.sun.istack.NotNull;
 
 public class UserRequestDto {
-    @NotNull
+    @ValidateEmail
     private String email;
     @NotNull
     private String password;
