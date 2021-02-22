@@ -5,6 +5,7 @@ import com.dev.theater.model.dto.ShoppingCartResponseDto;
 import com.dev.theater.service.MovieSessionService;
 import com.dev.theater.service.ShoppingCartService;
 import com.dev.theater.service.UserService;
+import org.apache.maven.artifact.repository.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,9 +39,9 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/movie-sessions")
-    public void addMovieSession(@RequestParam Long userId,@RequestParam Long movieSessionId) {
+    public void addMovieSession(Authentication authentication, @RequestParam Long movieSessionId) {
         shoppingCartService.addSession(movieSessionService
                 .getById(movieSessionId).orElseThrow(),
-                userService.findById(userId).orElseThrow());
+                userService.findByEmail(authentication.getUsername()).orElseThrow());
     }
 }

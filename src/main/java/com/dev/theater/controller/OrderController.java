@@ -9,10 +9,10 @@ import com.dev.theater.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,17 +35,18 @@ public class OrderController {
     }
 
     @GetMapping
-    public List<OrderResponseDto> getAllOrderByUserId(@RequestParam Long userId) {
-        User user = userService.findById(userId).orElseThrow();
+    public List<OrderResponseDto> getAllOrderByUserId(Authentication authentication) {
+        String nameUser = authentication.getName();
+        User user = userService.findByEmail(nameUser).orElseThrow();
         return orderService.getOrdersHistory(user)
                 .stream().map(orderMapper::orderToDto)
                 .collect(Collectors.toList());
     }
 
     @PostMapping("/complete")
-    public void completeOrder(@RequestParam Long userId) {
+    public void completeOrder(Authentication authentication) {
         orderService.completeOrder(shoppingCartService
                 .getByUser(userService
-                        .findById(userId).orElseThrow()));
+                        .findByEmail(authentication.getName()).orElseThrow()));
     }
 }

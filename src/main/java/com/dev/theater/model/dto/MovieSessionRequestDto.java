@@ -1,8 +1,14 @@
 package com.dev.theater.model.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
 public class MovieSessionRequestDto {
+    @Min(1)
     private Long movieId;
+    @NotNull
     private String showTime;
+    @Min(1)
     private Long cinemaHallId;
 
     public String getShowTime() {

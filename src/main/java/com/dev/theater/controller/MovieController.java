@@ -4,6 +4,7 @@ import com.dev.theater.mapper.MovieMapper;
 import com.dev.theater.model.dto.MovieRequestDto;
 import com.dev.theater.model.dto.MovieResponseDto;
 import com.dev.theater.service.MovieService;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public void addMovie(@RequestBody MovieRequestDto movieRequestDto) {
+    public void addMovie(@RequestBody @Valid MovieRequestDto movieRequestDto) {
         movieService.add(movieMapper.dtoToMovie(movieRequestDto));
     }
 }
