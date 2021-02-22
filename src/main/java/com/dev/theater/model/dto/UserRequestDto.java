@@ -1,13 +1,11 @@
 package com.dev.theater.model.dto;
 
 import com.sun.istack.NotNull;
-import jakarta.validation.constraints.Size;
 
 public class UserRequestDto {
     @NotNull
     private String email;
     @NotNull
-    @Size(min = 5)
     private String password;
 
     public String getEmail() {

@@ -1,13 +1,19 @@
 package com.dev.theater.model.dto;
 
-import jakarta.validation.constraints.NotNull;
+import com.dev.theater.security.validators.ValidateEmail;
+import com.dev.theater.security.validators.ValidatePassword;
 
+@ValidatePassword.List({
+        @ValidatePassword(
+                field = "password",
+                fieldMatch = "repeatPassword",
+                message = "Password does not the same"
+        )
+})
 public class UserRegistrationDto {
-    @NotNull
+    @ValidateEmail
     private String email;
-    @NotNull
     private String password;
-    @NotNull
     private String repeatPassword;
 
     public String getPassword() {
