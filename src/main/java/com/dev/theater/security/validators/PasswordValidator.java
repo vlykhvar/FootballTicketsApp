@@ -5,7 +5,8 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
 
-public class PasswordValidator implements ConstraintValidator<ValidatePassword, UserRegistrationDto> {
+public class PasswordValidator
+        implements ConstraintValidator<ValidatePassword, UserRegistrationDto> {
     private String password;
     private String repeatPassword;
 
@@ -17,7 +18,8 @@ public class PasswordValidator implements ConstraintValidator<ValidatePassword, 
     }
 
     @Override
-    public boolean isValid(UserRegistrationDto userRegistrationDto, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(UserRegistrationDto userRegistrationDto,
+                           ConstraintValidatorContext constraintValidatorContext) {
         Object fieldValue = new BeanWrapperImpl(userRegistrationDto)
                 .getPropertyValue(password);
         Object fieldMatchValue = new BeanWrapperImpl(userRegistrationDto)
