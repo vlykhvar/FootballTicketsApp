@@ -1,10 +1,12 @@
 package com.dev.theater.model;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,15 +19,16 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+    @OneToMany
     @Column(nullable = false)
-    private byte[] salt;
+    private Set<Role> roleName;
 
-    public byte[] getSalt() {
-        return salt;
+    public Set<Role> getRoleName() {
+        return roleName;
     }
 
-    public void setSalt(byte[] salt) {
-        this.salt = salt;
+    public void setRoleName(Set<Role> roleName) {
+        this.roleName = roleName;
     }
 
     public Long getId() {

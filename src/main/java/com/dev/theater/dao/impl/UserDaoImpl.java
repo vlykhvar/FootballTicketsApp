@@ -29,9 +29,11 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
     @Override
     public Optional<User> findByEmail(String email) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from User where email = :email", User.class)
+            Optional<User> user = session.createQuery("select u from User u"
+                    + " join fetch u.roleName where u.email = :email", User.class)
                     .setParameter("email", email)
                     .uniqueResultOptional();
+            return user;
         } catch (Exception e) {
             throw new CrudException("Could not find user with email: " + email, e);
         }

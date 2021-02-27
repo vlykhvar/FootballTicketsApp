@@ -17,7 +17,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
         "com.dev.theater.service",
         "com.dev.theater.dao",
         "com.dev.theater.security",
-        "com.dev.theater.mapper"
+        "com.dev.theater.mapper",
+        "com.dev.theater.confing"
 })
 public class AppConfig {
     private final Environment environment;
