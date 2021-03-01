@@ -1,6 +1,7 @@
 package com.dev.football.model;
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class GameSession {
     @ManyToOne
     @JoinColumn(name = "stadium")
     private Stadium stadium;
+    @Column(name = "show_time")
     private LocalDateTime showTime;
 
     public Long getId() {

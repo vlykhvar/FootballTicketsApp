@@ -13,7 +13,7 @@ public class ShoppingCartMapper {
         ShoppingCartResponseDto shoppingCartResponseDto = new ShoppingCartResponseDto();
         shoppingCartResponseDto.setId(shoppingCart.getId());
         shoppingCartResponseDto.setUserEmail(shoppingCart.getUser().getEmail());
-        List<Long> responseList = shoppingCart.getTicketList()
+        List<Long> responseList = shoppingCart.getTickets()
                 .stream().map(Ticket::getId).collect(Collectors.toList());
         shoppingCartResponseDto.setTicketIds(responseList);
         return shoppingCartResponseDto;

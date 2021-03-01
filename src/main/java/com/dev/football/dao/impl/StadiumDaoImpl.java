@@ -33,7 +33,7 @@ public class StadiumDaoImpl extends DaoImpl<Stadium> implements StadiumDao {
                     .setParameter("stadiumId", stadiumId)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new CrudException("Can't get cinema hall on id " + stadiumId);
+            throw new CrudException("Can't get stadium on id " + stadiumId);
         }
     }
 }

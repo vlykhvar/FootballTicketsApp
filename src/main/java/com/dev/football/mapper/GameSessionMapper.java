@@ -21,13 +21,13 @@ public class GameSessionMapper {
     }
 
     public GameSessionResponseDto gameSessionToDto(GameSession gameSession) {
-        GameSessionResponseDto movieSessionDto = new GameSessionResponseDto();
-        movieSessionDto.setId(gameSession.getId());
-        movieSessionDto.setShowTime(gameSession.getShowTime().toString());
-        movieSessionDto.setGameTitle(gameSession.getGame().getTitle());
-        movieSessionDto.setStadiumId(gameSession.getStadium().getId());
-        movieSessionDto.setGameSessionDescription(gameSession.getStadium().getDescription());
-        return movieSessionDto;
+        GameSessionResponseDto gameSessionDto = new GameSessionResponseDto();
+        gameSessionDto.setId(gameSession.getId());
+        gameSessionDto.setShowTime(gameSession.getShowTime().toString());
+        gameSessionDto.setGameTitle(gameSession.getGame().getTitle());
+        gameSessionDto.setStadiumId(gameSession.getStadium().getId());
+        gameSessionDto.setGameSessionDescription(gameSession.getStadium().getDescription());
+        return gameSessionDto;
     }
 
     public GameSession dtoToGameSession(GameSessionRequestDto gameSessionRequestDto) {

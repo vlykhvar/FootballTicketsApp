@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameMapper {
     public GameResponseDto gameToDto(Game game) {
-        GameResponseDto movieDto = new GameResponseDto();
-        movieDto.setDescription(game.getDescription());
-        movieDto.setTitle(game.getTitle());
-        movieDto.setId(game.getId());
-        return movieDto;
+        GameResponseDto gameDto = new GameResponseDto();
+        gameDto.setDescription(game.getDescription());
+        gameDto.setTitle(game.getTitle());
+        gameDto.setId(game.getId());
+        return gameDto;
     }
 
     public Game dtoToGame(GameRequestDto gameRequestDto) {

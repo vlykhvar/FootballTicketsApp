@@ -2,6 +2,7 @@ package com.dev.football.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,14 +17,14 @@ public class ShoppingCart {
     @Id
     private Long id;
     @OneToMany
-    private List<Ticket> ticketList;
+    private List<Ticket> tickets;
     @OneToOne
     @MapsId
     @JoinColumn (name = "id")
     private User user;
 
     public ShoppingCart() {
-        ticketList = new ArrayList<>();
+        tickets = new ArrayList<>();
     }
 
     public Long getId() {
@@ -34,12 +35,12 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public List<Ticket> getTicketList() {
-        return ticketList;
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
-    public void setTicketList(List<Ticket> ticketList) {
-        this.ticketList = ticketList;
+    public void setTickets(List<Ticket> ticketList) {
+        this.tickets = ticketList;
     }
 
     public User getUser() {
@@ -54,7 +55,7 @@ public class ShoppingCart {
     public String toString() {
         return "ShoppingCart{"
                 + "id=" + id
-                + ", ticketList=" + ticketList
+                + ", tickets=" + tickets
                 + ", user=" + user
                 + '}';
     }

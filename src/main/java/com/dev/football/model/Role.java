@@ -1,6 +1,8 @@
 package com.dev.football.model;
 
 import com.sun.istack.NotNull;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
+    @Column(name = "role_name")
     private String roleName;
 
     public String getRoleName() {

@@ -20,7 +20,7 @@ public class ShoppingCartDaoImpl extends DaoImpl<ShoppingCart> implements Shoppi
     @Override
     public ShoppingCart getByUser(User user) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from ShoppingCart sc left join fetch sc.ticketList"
+            return session.createQuery("from ShoppingCart sc left join fetch sc.tickets"
                 + " where sc.user = :user", ShoppingCart.class)
                 .setParameter("user", user).getSingleResult();
         } catch (Exception e) {
