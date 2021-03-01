@@ -1,4 +1,4 @@
-package com.dev.theater.confing;
+package com.dev.theater.config;
 
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -20,7 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
         "com.dev.theater.dao",
         "com.dev.theater.security",
         "com.dev.theater.mapper",
-        "com.dev.theater.confing"
+        "com.dev.theater.config"
 })
 public class AppConfig {
     private final Environment environment;

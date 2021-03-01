@@ -11,15 +11,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsServiceImp implements UserDetailsService {
-    private UserService userService;
+public class UserDetailsServiceImpl implements UserDetailsService {
+    private final UserService userService;
 
     @Autowired
-    public UserDetailsServiceImp(UserService userService) {
+    public UserDetailsServiceImpl(UserService userService) {
         this.userService = userService;
-    }
-
-    public UserDetailsServiceImp() {
     }
 
     @Override
@@ -29,7 +26,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
         userBuilder = org.springframework.security.core.userdetails
                 .User.withUsername(user.getEmail());
         userBuilder.password(user.getPassword());
-        userBuilder.roles(user.getRoleName().stream()
+        userBuilder.roles(user.getRoles().stream()
                 .map(Role::getRoleName).toArray(String[]::new));
         return userBuilder.build();
     }

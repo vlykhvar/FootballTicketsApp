@@ -1,4 +1,4 @@
-package com.dev.theater.confing;
+package com.dev.theater.config;
 
 import com.dev.theater.model.Role;
 import com.dev.theater.model.User;
@@ -19,26 +19,30 @@ public class DataInitializer {
     }
 
     @PostConstruct
-    public void addAdmin() {
+    public void dataStartInitialize() {
+        addAdmin();
+        addUser();
+    }
+
+    private void addAdmin() {
         Role roleAdmin = new Role();
         roleAdmin.setRoleName("ADMIN");
         roleService.add(roleAdmin);
         User admin = new User();
         admin.setEmail("admin");
         admin.setPassword("123");
-        admin.setRoleName(Set.of(roleAdmin));
+        admin.setRoles(Set.of(roleAdmin));
         userService.add(admin);
     }
 
-    @PostConstruct
-    public void addUser() {
+    private void addUser() {
         Role roleUser = new Role();
         roleUser.setRoleName("USER");
         roleService.add(roleUser);
         User user = new User();
         user.setEmail("user");
         user.setPassword("123");
-        user.setRoleName(Set.of(roleUser));
+        user.setRoles(Set.of(roleUser));
         userService.add(user);
     }
 }

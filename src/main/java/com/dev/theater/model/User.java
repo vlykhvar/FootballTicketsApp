@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,16 +19,15 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @OneToMany
-    @Column(nullable = false)
-    private Set<Role> roleName;
+    @ManyToMany
+    private Set<Role> roles;
 
-    public Set<Role> getRoleName() {
-        return roleName;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRoleName(Set<Role> roleName) {
-        this.roleName = roleName;
+    public void setRoles(Set<Role> roleName) {
+        this.roles = roleName;
     }
 
     public Long getId() {

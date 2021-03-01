@@ -1,4 +1,4 @@
-package com.dev.theater.confing;
+package com.dev.theater.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

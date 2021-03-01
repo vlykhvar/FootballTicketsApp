@@ -20,10 +20,9 @@ public class RoleDaoImpl extends DaoImpl<Role> implements RoleDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from Role where roleName = :roleName", Role.class)
                     .setParameter("roleName", roleName)
-                    .uniqueResultOptional().orElseThrow();
+                    .getSingleResult();
         } catch (Exception e) {
             throw new CrudException("Could not find " + roleName, e);
         }
     }
-
 }

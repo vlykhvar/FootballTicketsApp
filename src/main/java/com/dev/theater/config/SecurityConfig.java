@@ -1,8 +1,6 @@
-package com.dev.theater.confing;
+package com.dev.theater.config;
 
-import com.dev.theater.security.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,9 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/register").permitAll()
                 .antMatchers(HttpMethod.GET, "/cinema-halls").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/cinema-halls").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/movies").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/movies").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/movie-sessions").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/movie-sessions/").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/movie-sessions/").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/orders").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/orders/complete").hasRole("USER")
@@ -43,14 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/shopping-carts/by-user").hasRole("USER")
                 .antMatchers(HttpMethod.GET, "/users/by-email").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .and()
-                .formLogin().permitAll()
+                .and().formLogin().permitAll()
+                .and().httpBasic()
                 .and().csrf().disable();
 
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImp();
     }
 }
