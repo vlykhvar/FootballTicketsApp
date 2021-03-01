@@ -1,4 +1,4 @@
-package com.dev.theater.confing;
+package com.dev.theater.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.dev.theater.confing;
+package com.dev.theater.config;
 
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @PropertySource("classpath:db.properties")
@@ -17,7 +19,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
         "com.dev.theater.service",
         "com.dev.theater.dao",
         "com.dev.theater.security",
-        "com.dev.theater.mapper"
+        "com.dev.theater.mapper",
+        "com.dev.theater.config"
 })
 public class AppConfig {
     private final Environment environment;
@@ -49,5 +52,10 @@ public class AppConfig {
         localSessionFactoryBean.setHibernateProperties(properties);
         localSessionFactoryBean.setPackagesToScan("com.dev.theater.model");
         return localSessionFactoryBean;
+    }
+
+    @Bean
+    public PasswordEncoder getEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
