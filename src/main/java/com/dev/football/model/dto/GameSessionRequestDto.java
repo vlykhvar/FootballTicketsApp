@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class GameSessionRequestDto {
     @Min(1)
-    private Long movieId;
+    private Long gameId;
     @NotNull
     private String showTime;
     @Min(1)
@@ -19,12 +19,12 @@ public class GameSessionRequestDto {
         this.showTime = showTime;
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public Long getGameId() {
+        return gameId;
     }
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
     }
 
     public Long getStadiumId() {

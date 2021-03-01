@@ -32,7 +32,7 @@ public class GameSessionMapper {
 
     public GameSession dtoToGameSession(GameSessionRequestDto gameSessionRequestDto) {
         GameSession gameSession = new GameSession();
-        gameSession.setGame(gameService.findById(gameSessionRequestDto.getMovieId()));
+        gameSession.setGame(gameService.findById(gameSessionRequestDto.getGameId()));
         gameSession.setStadium(
                 stadiumService.findById(gameSessionRequestDto.getStadiumId()));
         gameSession.setShowTime(LocalDateTime.parse(gameSessionRequestDto.getShowTime()));
