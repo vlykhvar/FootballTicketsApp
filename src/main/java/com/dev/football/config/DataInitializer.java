@@ -30,7 +30,7 @@ public class DataInitializer {
         roleService.add(roleAdmin);
         User admin = new User();
         admin.setEmail("admin");
-        admin.setPassword("123");
+        admin.setPassword("test");
         admin.setRoles(Set.of(roleAdmin));
         userService.add(admin);
     }
@@ -41,7 +41,7 @@ public class DataInitializer {
         roleService.add(roleUser);
         User user = new User();
         user.setEmail("user");
-        user.setPassword("123");
+        user.setPassword("test");
         user.setRoles(Set.of(roleUser));
         userService.add(user);
     }

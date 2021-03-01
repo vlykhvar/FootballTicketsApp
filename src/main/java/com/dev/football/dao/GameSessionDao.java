@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GameSessionDao extends GenericDao<GameSession> {
-    List<GameSession> findAvailableSessions(Long movieId, LocalDate date);
+    List<GameSession> findAvailableSessions(Long gameId, LocalDate date);
 
     GameSession update(GameSession gameSession);
 

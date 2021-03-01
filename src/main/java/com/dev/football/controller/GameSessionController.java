@@ -22,20 +22,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/movie-sessions")
-public class MovieSessionController {
+@RequestMapping("/game-sessions")
+public class GameSessionController {
     private final GameSessionMapper gameSessionMapper;
     private final GameSessionService gameSessionService;
 
     @Autowired
-    public MovieSessionController(GameSessionMapper gameSessionMapper,
-                                  GameSessionService gameSessionService) {
+    public GameSessionController(GameSessionMapper gameSessionMapper,
+                                 GameSessionService gameSessionService) {
         this.gameSessionMapper = gameSessionMapper;
         this.gameSessionService = gameSessionService;
     }
 
     @PostMapping
-    public void addMovieSession(@RequestBody @Valid GameSessionRequestDto gameSessionRequestDto) {
+    public void addGameSession(@RequestBody @Valid GameSessionRequestDto gameSessionRequestDto) {
         GameSession gameSession = gameSessionMapper.dtoToGameSession(gameSessionRequestDto);
         gameSessionService.add(gameSession);
     }

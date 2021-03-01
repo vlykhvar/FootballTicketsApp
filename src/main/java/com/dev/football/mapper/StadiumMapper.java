@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StadiumMapper {
-    public StadiumResponseDto cinemaHallToDto(Stadium stadium) {
+    public StadiumResponseDto stadiumToDto(Stadium stadium) {
         StadiumResponseDto stadiumResponseDto = new StadiumResponseDto();
         stadiumResponseDto.setCapacity(stadium.getCapacity());
         stadiumResponseDto.setId(stadium.getId());
@@ -15,7 +15,7 @@ public class StadiumMapper {
         return stadiumResponseDto;
     }
 
-    public Stadium dtoToCinemaHall(StadiumRequestDto stadiumRequestDto) {
+    public Stadium dtoToStadium(StadiumRequestDto stadiumRequestDto) {
         Stadium stadium = new Stadium();
         stadium.setCapacity(stadiumRequestDto.getCapacity());
         stadium.setDescription(stadiumRequestDto.getDescription());

@@ -16,28 +16,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cinema-halls")
-public class CinemaHallController {
+@RequestMapping("/stadiums")
+public class StadiumController {
     private final StadiumMapper stadiumMapper;
     private final StadiumService stadiumService;
 
     @Autowired
-    public CinemaHallController(StadiumMapper stadiumMapper,
-                                StadiumService stadiumService) {
+    public StadiumController(StadiumMapper stadiumMapper,
+                             StadiumService stadiumService) {
         this.stadiumMapper = stadiumMapper;
         this.stadiumService = stadiumService;
     }
 
     @GetMapping
-    public List<StadiumResponseDto> getAllCinemaHall() {
+    public List<StadiumResponseDto> getAllStadium() {
         return stadiumService.getAll().stream()
-                .map(stadiumMapper::cinemaHallToDto)
+                .map(stadiumMapper::stadiumToDto)
                 .collect(Collectors.toList());
     }
 
     @PostMapping
-    public void addCinemaHall(@RequestBody @Valid StadiumRequestDto stadiumRequestDto) {
-        Stadium stadium = stadiumMapper.dtoToCinemaHall(stadiumRequestDto);
+    public void addStadium(@RequestBody @Valid StadiumRequestDto stadiumRequestDto) {
+        Stadium stadium = stadiumMapper.dtoToStadium(stadiumRequestDto);
         stadiumService.add(stadium);
     }
 }

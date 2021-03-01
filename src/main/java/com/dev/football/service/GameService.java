@@ -8,5 +8,5 @@ public interface GameService {
 
     List<Game> getAll();
 
-    Game findById(Long movieId);
+    Game findById(Long gameId);
 }

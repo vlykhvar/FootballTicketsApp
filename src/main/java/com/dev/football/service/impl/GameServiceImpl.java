@@ -27,7 +27,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game findById(Long movieId) {
-        return gameDao.findById(movieId);
+    public Game findById(Long gameId) {
+        return gameDao.findById(gameId);
     }
 }

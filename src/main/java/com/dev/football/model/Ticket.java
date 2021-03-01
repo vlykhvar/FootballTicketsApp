@@ -24,11 +24,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public GameSession getMovieSession() {
+    public GameSession getGameSession() {
         return gameSession;
     }
 
-    public void setMovieSession(GameSession gameSession) {
+    public void setGameSession(GameSession gameSession) {
         this.gameSession = gameSession;
     }
 

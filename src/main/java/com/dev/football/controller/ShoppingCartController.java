@@ -38,8 +38,8 @@ public class ShoppingCartController {
                 .getByUser(userService.findById(userId).orElseThrow()));
     }
 
-    @PostMapping("/movie-sessions")
-    public void addMovieSession(Authentication authentication, @RequestParam Long movieSessionId) {
+    @PostMapping("/game-sessions")
+    public void addGameSession(Authentication authentication, @RequestParam Long movieSessionId) {
         shoppingCartService.addSession(gameSessionService
                 .getById(movieSessionId).orElseThrow(),
                 userService.findByEmail(authentication.getUsername()).orElseThrow());

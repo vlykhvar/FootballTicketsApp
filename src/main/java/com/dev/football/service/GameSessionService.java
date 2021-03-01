@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GameSessionService {
-    List<GameSession> findAvailableSessions(Long movieId, LocalDate date);
+    List<GameSession> findAvailableSessions(Long gameId, LocalDate date);
 
     GameSession add(GameSession session);
 

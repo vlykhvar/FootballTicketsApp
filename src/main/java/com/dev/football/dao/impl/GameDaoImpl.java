@@ -26,14 +26,14 @@ public class GameDaoImpl extends DaoImpl<Game> implements GameDao {
     }
 
     @Override
-    public Game findById(Long movieId) {
+    public Game findById(Long gameId) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from Game "
-                    + "where id = :movieId", Game.class)
-                    .setParameter("movieId", movieId)
+                    + "where id = :gameId", Game.class)
+                    .setParameter("gameId", gameId)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new CrudException("Can't get movie on id " + movieId);
+            throw new CrudException("Can't get movie on id " + gameId);
         }
     }
 }

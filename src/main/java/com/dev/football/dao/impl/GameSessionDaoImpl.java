@@ -21,16 +21,16 @@ public class GameSessionDaoImpl extends DaoImpl<GameSession> implements GameSess
     }
 
     @Override
-    public List<GameSession> findAvailableSessions(Long movieId, LocalDate date) {
+    public List<GameSession> findAvailableSessions(Long gameId, LocalDate date) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from game_session "
-                    + "where id = :movieId and DATE_FORMAT(showTime,'%Y-%m-%d') "
+            return session.createQuery("from game_session"
+                    + " where id = :gameId and DATE_FORMAT(showTime,'%Y-%m-%d') "
                     + "= :date", GameSession.class)
-                    .setParameter("movieId", movieId)
+                    .setParameter("gameId", gameId)
                     .setParameter("date", date.format(DateTimeFormatter.ISO_DATE))
                     .getResultList();
         } catch (Exception e) {
-            throw new CrudException("Can't get session on id " + movieId + " in " + date);
+            throw new CrudException("Can't get session on id " + gameId + " in " + date);
         }
     }
 
@@ -81,14 +81,14 @@ public class GameSessionDaoImpl extends DaoImpl<GameSession> implements GameSess
     }
 
     @Override
-    public Optional<GameSession> getById(Long movieSessionId) {
+    public Optional<GameSession> getById(Long gameSessionId) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from MovieSession"
-                    + "where id = :movieSessionId", GameSession.class)
-                    .setParameter("movieSessionId", movieSessionId)
+                    + " where id = :gameSessionId", GameSession.class)
+                    .setParameter("gameSessionId", gameSessionId)
                     .uniqueResultOptional();
         } catch (Exception e) {
-            throw new CrudException("Can't get movie session on id " + movieSessionId);
+            throw new CrudException("Can't get movie session on id " + gameSessionId);
         }
     }
 }

@@ -8,5 +8,5 @@ public interface StadiumService {
 
     List<Stadium> getAll();
 
-    Stadium findById(Long cinemaHallId);
+    Stadium findById(Long stadiumId);
 }

@@ -15,26 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/movies")
-public class MovieController {
+@RequestMapping("/games")
+public class GameController {
     private final GameMapper gameMapper;
     private final GameService gameService;
 
     @Autowired
-    public MovieController(GameMapper gameMapper, GameService gameService) {
+    public GameController(GameMapper gameMapper, GameService gameService) {
         this.gameMapper = gameMapper;
         this.gameService = gameService;
     }
 
     @GetMapping
-    public List<GameResponseDto> getMovies() {
+    public List<GameResponseDto> getGames() {
         return gameService.getAll().stream()
-                .map(gameMapper::movieToDto)
+                .map(gameMapper::gameToDto)
                 .collect(Collectors.toList());
     }
 
     @PostMapping
-    public void addMovie(@RequestBody @Valid GameRequestDto gameRequestDto) {
-        gameService.add(gameMapper.dtoToMovie(gameRequestDto));
+    public void addGame(@RequestBody @Valid GameRequestDto gameRequestDto) {
+        gameService.add(gameMapper.dtoToGame(gameRequestDto));
     }
 }

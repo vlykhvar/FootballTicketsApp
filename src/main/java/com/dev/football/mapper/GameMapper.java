@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GameMapper {
-    public GameResponseDto movieToDto(Game game) {
+    public GameResponseDto gameToDto(Game game) {
         GameResponseDto movieDto = new GameResponseDto();
         movieDto.setDescription(game.getDescription());
         movieDto.setTitle(game.getTitle());
@@ -15,7 +15,7 @@ public class GameMapper {
         return movieDto;
     }
 
-    public Game dtoToMovie(GameRequestDto gameRequestDto) {
+    public Game dtoToGame(GameRequestDto gameRequestDto) {
         Game game = new Game();
         game.setDescription(gameRequestDto.getDescription());
         game.setTitle(gameRequestDto.getTitle());

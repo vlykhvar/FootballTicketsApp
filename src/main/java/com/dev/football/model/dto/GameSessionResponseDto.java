@@ -11,8 +11,8 @@ public class GameSessionResponseDto {
         return stadiumDescription;
     }
 
-    public void setGameSessionDescription(String cinemaHallDescription) {
-        this.stadiumDescription = cinemaHallDescription;
+    public void setGameSessionDescription(String stadiumDescription) {
+        this.stadiumDescription = stadiumDescription;
     }
 
     public Long getId() {

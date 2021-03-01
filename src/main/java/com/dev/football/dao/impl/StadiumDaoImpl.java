@@ -26,14 +26,14 @@ public class StadiumDaoImpl extends DaoImpl<Stadium> implements StadiumDao {
     }
 
     @Override
-    public Stadium findById(Long cinemaHallId) {
+    public Stadium findById(Long stadiumId) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from Stadium "
-                    + "where id = :cinemaHallId", Stadium.class)
-                    .setParameter("cinemaHallId", cinemaHallId)
+                    + "where id = :stadiumId", Stadium.class)
+                    .setParameter("stadiumId", stadiumId)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new CrudException("Can't get cinema hall on id " + cinemaHallId);
+            throw new CrudException("Can't get cinema hall on id " + stadiumId);
         }
     }
 }

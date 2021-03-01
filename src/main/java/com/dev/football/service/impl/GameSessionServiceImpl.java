@@ -19,8 +19,8 @@ public class GameSessionServiceImpl implements GameSessionService {
     }
 
     @Override
-    public List<GameSession> findAvailableSessions(Long movieId, LocalDate date) {
-        return gameSessionDao.findAvailableSessions(movieId, date);
+    public List<GameSession> findAvailableSessions(Long gameId, LocalDate date) {
+        return gameSessionDao.findAvailableSessions(gameId, date);
     }
 
     @Override

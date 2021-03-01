@@ -27,7 +27,7 @@ public class StadiumServiceImpl implements StadiumService {
     }
 
     @Override
-    public Stadium findById(Long cinemaHallId) {
-        return stadiumDao.findById(cinemaHallId);
+    public Stadium findById(Long stadiumId) {
+        return stadiumDao.findById(stadiumId);
     }
 }

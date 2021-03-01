@@ -6,5 +6,5 @@ import java.util.List;
 public interface GameDao extends GenericDao<Game> {
     List<Game> getAll();
 
-    Game findById(Long movieId);
+    Game findById(Long gameId);
 }
