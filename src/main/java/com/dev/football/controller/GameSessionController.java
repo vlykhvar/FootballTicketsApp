@@ -49,11 +49,11 @@ public class GameSessionController {
     }
 
     @GetMapping("/available")
-    public List<GameSessionResponseDto> getAvailable(@RequestParam Long movieId,
+    public List<GameSessionResponseDto> getAvailable(@RequestParam Long gameId,
                                                      @RequestParam
                                               @DateTimeFormat(pattern = "dd.MM.yyyy")
                                                       LocalDate date) {
-        return gameSessionService.findAvailableSessions(movieId, date).stream()
+        return gameSessionService.findAvailableSessions(gameId, date).stream()
                 .map(gameSessionMapper::gameSessionToDto)
                 .collect(Collectors.toList());
     }

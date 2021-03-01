@@ -47,7 +47,7 @@ public class GameSessionDaoImpl extends DaoImpl<GameSession> implements GameSess
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new CrudException("Can't update moviesession: "
+            throw new CrudException("Can't update game session: "
                     + gameSession, e);
         } finally {
             if (session != null) {
@@ -71,7 +71,7 @@ public class GameSessionDaoImpl extends DaoImpl<GameSession> implements GameSess
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new CrudException("Can't delete moviesession by id: "
+            throw new CrudException("Can't delete game session by id: "
                     + id, e);
         } finally {
             if (session != null) {
@@ -83,12 +83,12 @@ public class GameSessionDaoImpl extends DaoImpl<GameSession> implements GameSess
     @Override
     public Optional<GameSession> getById(Long gameSessionId) {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from MovieSession"
+            return session.createQuery("from GameSession"
                     + " where id = :gameSessionId", GameSession.class)
                     .setParameter("gameSessionId", gameSessionId)
                     .uniqueResultOptional();
         } catch (Exception e) {
-            throw new CrudException("Can't get movie session on id " + gameSessionId);
+            throw new CrudException("Can't get game session on id " + gameSessionId);
         }
     }
 }
