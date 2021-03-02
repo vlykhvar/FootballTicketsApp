@@ -1,6 +1,7 @@
-**Online Football Tickets App**\
-This project was created to demonstrate skills in working with a technology stacks.
+**Online Football Tickets App**
 ---
+This project was created to demonstrate skills in working with a technology stacks.
+
 App clients can perform the following actions:
 
 `No role:`
