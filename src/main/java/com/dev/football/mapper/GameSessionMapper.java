@@ -26,7 +26,7 @@ public class GameSessionMapper {
         gameSessionDto.setShowTime(gameSession.getShowTime().toString());
         gameSessionDto.setGameTitle(gameSession.getGame().getTitle());
         gameSessionDto.setStadiumId(gameSession.getStadium().getId());
-        gameSessionDto.setGameSessionDescription(gameSession.getStadium().getDescription());
+        gameSessionDto.setStadiumDescription(gameSession.getStadium().getDescription());
         return gameSessionDto;
     }
 

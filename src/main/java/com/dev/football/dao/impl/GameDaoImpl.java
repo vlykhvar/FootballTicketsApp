@@ -21,7 +21,7 @@ public class GameDaoImpl extends DaoImpl<Game> implements GameDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from Game", Game.class).getResultList();
         } catch (Exception e) {
-            throw new CrudException("Error getting all movies", e);
+            throw new CrudException("Error getting all games", e);
         }
     }
 
@@ -33,7 +33,7 @@ public class GameDaoImpl extends DaoImpl<Game> implements GameDao {
                     .setParameter("gameId", gameId)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new CrudException("Can't get movie on id " + gameId);
+            throw new CrudException("Can't get game on id " + gameId);
         }
     }
 }

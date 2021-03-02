@@ -7,11 +7,11 @@ public class GameSessionResponseDto {
     private Long stadiumId;
     private String stadiumDescription;
 
-    public String getGameSessionDescription() {
+    public String getStadiumDescription() {
         return stadiumDescription;
     }
 
-    public void setGameSessionDescription(String stadiumDescription) {
+    public void setStadiumDescription(String stadiumDescription) {
         this.stadiumDescription = stadiumDescription;
     }
 

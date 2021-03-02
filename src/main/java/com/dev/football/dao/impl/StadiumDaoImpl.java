@@ -21,7 +21,7 @@ public class StadiumDaoImpl extends DaoImpl<Stadium> implements StadiumDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("from Stadium", Stadium.class).getResultList();
         } catch (Exception e) {
-            throw new CrudException("Error getting all hall", e);
+            throw new CrudException("Error getting all stadiums", e);
         }
     }
 
